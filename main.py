@@ -18,13 +18,10 @@ BOT_TOKEN = os.getenv('BOT_TOKEN_GOODDAY')
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
 ##### Load data
-quotes = pd.read_csv('dataset/quotes.csv')
+quotes = pd.read_csv('dataset/quotes_final.csv')
 
 ##### set timezone
 time_zone = timezone('America/Mexico_City')
-
-##### Marina's chat id
-marina_chat_id = 872081518
 
 ##### 
 async def send_message(context: ContextTypes.DEFAULT_TYPE):
@@ -36,7 +33,7 @@ async def send_message(context: ContextTypes.DEFAULT_TYPE):
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     context.job_queue.run_daily(
         send_message, 
-        datetime.time(hour=23, minute=45, second=0, tzinfo=time_zone), 
+        datetime.time(hour=7, minute=15, second=0, tzinfo=time_zone), 
         chat_id=context._chat_id)
 
 async def hello(update: Update, context: ContextTypes.DEFAULT_TYPE):
